@@ -39,6 +39,17 @@ router.get('/', function(req, res) {
 // on routes that end in /bears
 // ----------------------------------------------------
 router.route('/bears')
+    // get all the bears (accessed at GET http://localhost:8080/api/bears)
+    .get(function(req, res) {
+        Bear.find(function(err, bears) {
+
+            if (err)
+                res.send(err);
+
+            res.json(bears);
+
+        });
+    })
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
         var bear = new Bear();      // create a new instance of the Bear model
@@ -54,17 +65,7 @@ router.route('/bears')
 
     })
 
-    // get all the bears (accessed at GET http://localhost:8080/api/bears)
-    .get(function(req, res) {
-        Bear.find(function(err, bears) {
 
-            if (err)
-                res.send(err);
-
-            res.json(bears);
-
-        });
-    });
 
 router.route('/bears/:bear_id')
 
