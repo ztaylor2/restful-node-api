@@ -6,6 +6,7 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
+var Bear       = require('./app/models/bear');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8080;        // set our port
 
 mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
+
 
 // ROUTES FOR OUR API
 // =============================================================================
